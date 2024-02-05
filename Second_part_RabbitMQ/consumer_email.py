@@ -21,10 +21,10 @@ def main():
 
     def callback(ch, method, properties, body):
         pk = body.decode()
-        take_task = Contact.objects(id=pk, sendtoemail=False).first()
+        take_task = Contact.objects(id=pk, sendtoemail=True).first()
 
         if take_task:
-            take_task.update(set__sendtoemail=True)
+            take_task.update(set__is_sended=True)
             print(f"{take_task.email} {take_task.fullname}: message send")
         ch.basic_ack(delivery_tag=method.delivery_tag)
 

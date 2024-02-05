@@ -12,7 +12,8 @@ class Contact (Document):
     phone = StringField(max_length=50)
     address = StringField(max_length=500)
     sendtoemail = BooleanField(default=False)
-    # sendtosms = BooleanField(default=False)
+    sendtosms = BooleanField(default=False)
+    is_sended = BooleanField(default=False)
 
 
 

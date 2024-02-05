@@ -20,10 +20,10 @@ def main():
 
     def callback(ch, method, properties, body):
         pk = body.decode()
-        take_task = Contact.objects(id=pk, sendtosms=False).first()
+        take_task = Contact.objects(id=pk, sendtosms=True).first()
 
         if take_task:
-            take_task.update(set__sendtosms=True)
+            take_task.update(set__is_sended=True)
             print(f"{take_task.phone} {take_task.fullname}: sms send")
         ch.basic_ack(delivery_tag=method.delivery_tag)
 
